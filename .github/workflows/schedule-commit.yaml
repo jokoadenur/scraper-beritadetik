@@ -1,0 +1,53 @@
+# Name of the workflow
+name: scrape-detik
+
+on:
+  push:
+    branches: main
+
+# code kalau mau penjadwalan
+# on:
+#  schedule:
+#    - cron: "*/5 * * * *" ini untuk menjalankan script otomatis setiap 5 menit
+
+# Jobs - What the computer should do? 
+jobs:
+  import-data:
+    # kita buat github action berjalan di ubuntu versi terbaru
+    runs-on: ubuntu-latest
+    steps:
+      # langkah pertama install R
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+      
+      # langkah kedua kita update dan install library di ubuntu
+      - run: |
+          sudo apt-get update
+          # khusus rvest di R, dibutuhkan libraries ubuntu sebagai berikut:
+          sudo apt-get install libcurl4-openssl-dev
+          
+      # berikutnya adalah install libraries yang dibutuhkan di R
+      - name: Install packages
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::dplyr
+            any::rvest
+      
+      # set working directory
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      # kita buat github action menjalankan skrip scrape.R
+      - name: Run skrip R
+        run: Rscript -e 'source("scrape.R")'
+      
+      # berikutnya kita akan commit dan push ke repo
+      - name: Commit results
+        run: |
+          git config --local user.email "isi sesuai jokoadenursiyono@gmail.com"
+          git config --local user.name "Joko Ade"
+          git add .
+          git commit -m 'Data updated' || echo "No changes to commit"
+          git push || echo "No changes to commit"
+          # jangan lupa set permission dulu ya
