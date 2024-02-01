@@ -33,6 +33,8 @@ jobs:
           packages: |
             any::dplyr
             any::rvest
+            any::stringr
+            any::openxlsx
       
       # set working directory
       - name: Check out repository
