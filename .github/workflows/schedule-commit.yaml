@@ -37,6 +37,10 @@ jobs:
       # set working directory
       - name: Check out repository
         uses: actions/checkout@v3
+      - name: Use Node.js 20
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
 
       # kita buat github action menjalankan skrip scrape.R
       - name: Run skrip R
