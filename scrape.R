@@ -30,10 +30,10 @@ for(hasil in seq(from = 1, to = 2, by = 1)){
 }
 
 # Baca data yang sudah ada
-sebelum <- read.xlsx("2024-02-11 10:45:19.5855.xlsx")
+#sebelum <- read.xlsx("2024-02-11 10:45:19.5855.xlsx")
 
 # Gabungkan data hasil scraping dengan data yang sudah ada sebelumnya
-update <- rbind(sebelum, detikjatim)
+#update <- rbind(sebelum, detikjatim)
 
 # Simpan data update ke file xlsx yang sama
-write.xlsx(update, "2024-02-11 10:45:19.5855.xlsx", row.names = FALSE)
+write.xlsx(detikjatim, "beritadetikjatim.xlsx", row.names = FALSE)
