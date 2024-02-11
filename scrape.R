@@ -29,9 +29,8 @@ for(hasil in seq(from = 1, to = 2, by = 1)){
   print(paste("page ke-", hasil))
 }
 
-# buat nama file
-nama_file = Sys.time() %>% as.character()
-nama_file = paste0(nama_file,".xlsx")
+sebelum <- read.xlsx("2024-02-02 23:08:19.552241.xlsx")
+update <- rbind(sebelum, detikjatim)
 
 # save headliner
-write.xlsx(detikjatim,nama_file)
+write.xlsx(update,"2024-02-02 23:08:19.552241.xlsx")
