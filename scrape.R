@@ -36,4 +36,4 @@ for(hasil in seq(from = 1, to = 2, by = 1)){
 #update <- rbind(sebelum, detikjatim)
 
 # Simpan data update ke file xlsx yang sama
-write.xlsx(detikjatim, "beritadetikjatim.xlsx", row.names = FALSE)
+write.xlsx(detikjatim, "beritadetikjatim.xlsx")
