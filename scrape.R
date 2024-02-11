@@ -39,4 +39,4 @@ update <- rbind(sebelum, detikjatim)
 update <- unique(update)
 
 # Simpan data update ke file xlsx yang sama
-write.xlsx(update, "beritadetikjatim.xlsx")
+write.xlsx(update, "beritadetikjatim.xlsx", row.names = FALSE)
