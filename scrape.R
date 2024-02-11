@@ -36,7 +36,7 @@ sebelum <- read.xlsx("beritadetikjatim.xlsx")
 update <- rbind(sebelum, detikjatim)
 
 # hapus duplikasi
-update <- unique(update)
+update2 <- distinct(update)
 
 # Simpan data update ke file xlsx yang sama
-write.xlsx(update, "beritadetikjatim.xlsx", row.names = FALSE)
+write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
