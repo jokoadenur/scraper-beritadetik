@@ -51,4 +51,5 @@ update <- rbind(sebelum, detikjatim)
 update2 <- distinct(update)
 
 # Simpan data update ke file xlsx yang sama
-write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
+#write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
+write.csv(update2, "beritadetikjatim.csv", row.names = FALSE)
