@@ -39,5 +39,16 @@ update <- rbind(sebelum, detikjatim)
 # hapus duplikasi
 update2 <- distinct(update)
 
+# ekstraksi tgl dan ubah menjadi date
+ekstrak_tgl <- function(x) {
+  tanggal <- regmatches(x, regexpr("\\d{2} [A-Za-z]+ \\d{4}", x))
+  tanggal <- as.Date(tanggal, format = "%d %b %Y")
+  tanggal <- format(tanggal, "%Y-%m-%d")
+  return(tanggal)
+}
+
+# Menerapkan fungsi pada kolom waktu
+update2$tgl <- sapply(update2$tgl, ekstrak_tgl)
+
 # Simpan data update ke file xlsx yang sama
 write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
