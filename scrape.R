@@ -16,7 +16,7 @@ dptisi <- function(x){
 
 detikjatim <- data.frame()
 
-for(hasil in seq(from = 1, to = 3, by = 1)){
+for(hasil in seq(from = 1, to = 2, by = 1)){
   url <-paste0("https://www.detik.com/search/searchall?query=Jatim&siteid=2&sortby=time&page=", hasil)
   laman <- read_html(url)
  
@@ -49,6 +49,9 @@ ekstrak_tgl <- function(x) {
 
 # Menerapkan fungsi pada kolom waktu
 update2$tgl <- sapply(update2$tgl, ekstrak_tgl)
+
+# urutkan tgl
+update2 <- arrange(update2, desc(tgl))
 
 # Simpan data update ke file xlsx yang sama
 write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
