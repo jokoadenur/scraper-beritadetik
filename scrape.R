@@ -51,7 +51,7 @@ ekstrak_tgl <- function(x) {
 update2$tgl <- sapply(update2$tgl, ekstrak_tgl)
 
 # urutkan tgl
-update2 <- arrange(update2, desc(tgl))
+update2 <- arrange(update2)
 
 # Simpan data update ke file xlsx yang sama
 write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
