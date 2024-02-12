@@ -32,6 +32,7 @@ jobs:
         with:
           packages: |
             any::dplyr
+            any::readxl
             any::rvest
             any::stringr
             any::openxlsx
