@@ -2,6 +2,7 @@
 rm(list=ls())
 
 # libraries
+library(readxl)
 library(dplyr)
 library(rvest)
 library(stringr)
@@ -30,7 +31,7 @@ for(hasil in seq(from = 1, to = 3, by = 1)){
 }
 
 # Baca data yang sudah ada
-sebelum <- read.xlsx("beritadetikjatim.xlsx")
+sebelum <- read_excel("https://github.com/jokoadenur/scraper-judul-berita/blob/main/beritadetikjatim.xlsx")
 
 # Gabungkan data hasil scraping dengan data yang sudah ada sebelumnya
 update <- rbind(sebelum, detikjatim)
