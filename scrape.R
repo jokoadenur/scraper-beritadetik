@@ -16,7 +16,7 @@ dptisi <- function(x){
 
 detikjatim <- data.frame()
 
-for(hasil in seq(from = 1, to = 2, by = 1)){
+for(hasil in seq(from = 1, to = 3, by = 1)){
   url <-paste0("https://www.detik.com/search/searchall?query=Jatim&siteid=2&sortby=time&page=", hasil)
   laman <- read_html(url)
  
@@ -42,7 +42,7 @@ ekstrak_tgl <- function(x) {
 detikjatim$tgl <- sapply(detikjatim$tgl, ekstrak_tgl)
 
 # Baca data yang sudah ada
-sebelum <- read_excel("beritadetikjatim.xlsx")
+sebelum <- read.csv("beritadetikjatim.csv")
 
 # Gabungkan data hasil scraping dengan data yang sudah ada sebelumnya
 update <- rbind(sebelum, detikjatim)
