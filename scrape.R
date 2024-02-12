@@ -31,13 +31,13 @@ for(hasil in seq(from = 1, to = 2, by = 1)){
 }
 
 # Baca data yang sudah ada
-sebelum <- read_excel("beritadetikjatim.xlsx")
+#sebelum <- read_excel("beritadetikjatim.xlsx")
 
 # Gabungkan data hasil scraping dengan data yang sudah ada sebelumnya
-update <- rbind(sebelum, detikjatim)
+#update <- rbind(sebelum, detikjatim)
 
 # hapus duplikasi
-update2 <- distinct(update)
+#update2 <- distinct(update)
 
 # ekstraksi tgl dan ubah menjadi date
 ekstrak_tgl <- function(x) {
@@ -48,10 +48,10 @@ ekstrak_tgl <- function(x) {
 }
 
 # Menerapkan fungsi pada kolom waktu
-update2$tgl <- sapply(update2$tgl, ekstrak_tgl)
+detikjatim$tgl <- sapply(detikjatim$tgl, ekstrak_tgl)
 
 # urutkan tgl
-update2 <- arrange(update2)
+#update2 <- arrange(update2)
 
 # Simpan data update ke file xlsx yang sama
-write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
+write.xlsx(detikjatim, "beritadetikjatim.xlsx", row.names = FALSE)
