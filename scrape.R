@@ -45,11 +45,9 @@ detikjatim$tgl <- sapply(detikjatim$tgl, ekstrak_tgl)
 sebelum <- read.csv("beritadetikjatim.csv")
 
 # Gabungkan data hasil scraping dengan data yang sudah ada sebelumnya
-update <- rbind(sebelum, detikjatim)
-
-# hapus duplikasi
-update2 <- distinct(update)
+update <- union(sebelum, detikjatim)
+update <- update %>% distinct(judul, tgl, .keep_all = TRUE)
 
 # Simpan data update ke file xlsx yang sama
 #write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
-write.csv(update2, "beritadetikjatim.csv", row.names = FALSE)
+write.csv(update, "beritadetikjatim.csv", row.names = FALSE)
