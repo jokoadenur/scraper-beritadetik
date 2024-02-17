@@ -36,6 +36,7 @@ jobs:
             any::rvest
             any::stringr
             any::openxlsx
+            any::googlesheets4
       
       # set working directory
       - name: Check out repository
