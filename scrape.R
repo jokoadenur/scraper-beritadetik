@@ -43,25 +43,12 @@ ekstrak_tgl <- function(x) {
 detikjatim$tgl <- sapply(detikjatim$tgl, ekstrak_tgl)
 
 # Baca data yang sudah ada
-#sebelum <- read.csv("beritadetikjatim.csv")
+sebelum <- read.csv("beritadetikjatim.csv")
 
 # Gabungkan data hasil scraping dengan data yang sudah ada sebelumnya
-#update <- union(sebelum, detikjatim)
-#update <- update %>% distinct(judul, tgl, .keep_all = TRUE)
+update <- union(sebelum, detikjatim)
+update <- update %>% distinct(judul, tgl, .keep_all = TRUE)
 
 # Simpan data update ke file xlsx yang sama
 #write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
-#write.csv(update, "beritadetikjatim.csv", row.names = FALSE)
-
-# simpan di googlesheet
-gs4_auth(email = "jokoadenursiyono@gmail.com)
-
-# Ambil ID spreadsheet dari URL
-spreadsheetid <- gs4_key("https://docs.google.com/spreadsheets/d/1lr1aDWDupEg6VBT-soMTj37cyNe0Ff2yl7LOS0cUkrs/edit?usp=sharing")
-
-# Import data yang ada sebelumnya di Google Sheet
-sheetku <- gs4_get(spreadsheetid)
-write_sheet(detikjatim, sheetku, sheet = "Sheet1")
-
-
-
+write.csv(update, "beritadetikjatim.csv", row.names = FALSE)
