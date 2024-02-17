@@ -58,6 +58,6 @@ library(googlesheets4)
 gs4_auth(email = "jokoadenursiyono@gmail.com")
 
 # Import data yang ada sebelumnya di Google Sheet
-sheetku <- gs4_get("https://docs.google.com/spreadsheets/d/1lr1aDWDupEg6VBTsoMTj37cyNe0Ff2yl7LOS0cUkrs/edit#gid=0")
+sheetku <- gs4_get("https://docs.google.com/spreadsheets/d/1lr1aDWDupEg6VBT-soMTj37cyNe0Ff2yl7LOS0cUkrs/edit#gid=0")
 # Mengupdate data yang ada dengan data terbaru
 write_sheet(detikjatim, sheetku, sheet = "Sheet1")
