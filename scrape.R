@@ -55,6 +55,13 @@ detikjatim$tgl <- sapply(detikjatim$tgl, ekstrak_tgl)
 
 # simpan di googlesheet
 gs4_auth(email = "jokoadenursiyono@gmail.com)
+
+# Ambil ID spreadsheet dari URL
+spreadsheetid <- gs4_key("https://docs.google.com/spreadsheets/d/1lr1aDWDupEg6VBT-soMTj37cyNe0Ff2yl7LOS0cUkrs/edit?usp=sharing")
+
 # Import data yang ada sebelumnya di Google Sheet
-sheetku <- gs4_get("https://docs.google.com/spreadsheets/d/1lr1aDWDupEg6VBT-soMTj37cyNe0Ff2yl7LOS0cUkrs/edit?usp=sharing")
+sheetku <- gs4_get(spreadsheetid)
 write_sheet(detikjatim, sheetku, sheet = "Sheet1")
+
+
+
