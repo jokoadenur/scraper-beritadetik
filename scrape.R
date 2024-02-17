@@ -52,3 +52,12 @@ update <- update %>% distinct(judul, tgl, .keep_all = TRUE)
 # Simpan data update ke file xlsx yang sama
 #write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
 write.csv(update, "beritadetikjatim.csv", row.names = FALSE)
+
+# Aktivasi Library
+library(googlesheets4)
+gs4_auth(email = "jokoadenursiyono@gmail.com")
+
+# Import data yang ada sebelumnya di Google Sheet
+sheetku <- gs4_get("https://docs.google.com/spreadsheets/d/1lr1aDWDupEg6VBTsoMTj37cyNe0Ff2yl7LOS0cUkrs/edit#gid=0")
+# Mengupdate data yang ada dengan data terbaru
+write_sheet(detikjatim, sheetku, sheet = "Sheet1")
