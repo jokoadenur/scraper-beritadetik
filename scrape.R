@@ -7,6 +7,7 @@ library(dplyr)
 library(rvest)
 library(stringr)
 library(openxlsx)
+library(googlesheets4)
 
 dptisi <- function(x){
   isi <- read_html(x)
@@ -50,4 +51,9 @@ update <- update %>% distinct(judul, tgl, .keep_all = TRUE)
 
 # Simpan data update ke file xlsx yang sama
 #write.xlsx(update2, "beritadetikjatim.xlsx", row.names = FALSE)
-write.csv(update, "beritadetikjatim.csv", row.names = FALSE)
+#write.csv(update, "beritadetikjatim.csv", row.names = FALSE)
+
+# simpan di googlesheet
+url <- gs4_get("https://docs.google.com/spreadsheets/d/1lr1aDWDupEg6VBT-soMTj37cyNe0Ff2yl7LOS0cUkrs/edit?usp=sharing")
+sheetku <- read_sheet(url, sheet = "Sheet1")
+write(update, sheetku, sheet = "Sheet1")
