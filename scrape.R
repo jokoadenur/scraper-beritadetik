@@ -54,7 +54,6 @@ update <- update %>% distinct(judul, tgl, .keep_all = TRUE)
 write.csv(update, "beritadetikjatim.csv", row.names = FALSE)
 
 # Aktivasi Library
-library(googlesheets4)
 gs4_auth(email = "jokoadenursiyono@gmail.com")
 
 # Import data yang ada sebelumnya di Google Sheet
